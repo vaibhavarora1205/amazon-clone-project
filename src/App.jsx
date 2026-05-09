@@ -1,13 +1,7 @@
-import React from 'react'
-import Navbar from './compoments/Navbar/Navbar'
-import Heroimage from './compoments/Heroimage'
+import HomePage from "./pages/HomePage";
+
 function App() {
-  return (
-    <>
-    <Navbar></Navbar>
-    <Heroimage></Heroimage>
-    </>
-  )
+  return <HomePage />;
 }
 
-export default App
+export default App;

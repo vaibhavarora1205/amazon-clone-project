@@ -1,9 +1,9 @@
-import React from 'react';
-import Heroimage from '../compoments/Heroimage';
-import QuadBoxSection from './sections/QuadBoxSection';
-import ProductBarSection from './sections/ProductBarSection';
-import ProductBoxSection from './sections/ProductBoxSection';
+import React from "react";
 
+import Heroimage from "./Heroimage";
+import QuadBoxSection from "./sections/QuadBoxSection";
+import ProductBarSection from "./sections/ProductBarSection";
+import ProductBoxSection from "./sections/ProductBoxSection";
 const HomeContent = () => {
   return (
     <main className="bg-[#EAEDED]">
