@@ -62,10 +62,10 @@ const quadBoxData = [
   {
     title: "Toys & Games for Kids",
     items: [
-      { img: "https://images.unsplash.com/photo-1558060370-d644485927b3?w=300&q=80", caption: "Action Figures" },
+      { img: "https://images.unsplash.com/photo-1608889476561-6242cfdbf622?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGF2ZW5nZXJzJTIwdG95fGVufDB8fDB8fHww", caption: "Action Figures" },
       { img: "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=300&q=80", caption: "Board Games" },
       { img: "https://images.unsplash.com/photo-1560393464-5c69a73c5770?w=300&q=80", caption: "Building Blocks" },
-      { img: "https://images.unsplash.com/photo-1471286174890-9c112ac6823b?w=300&q=80", caption: "Outdoor Play" },
+      { img: "https://images.unsplash.com/photo-1747749254142-4c40f2a17472?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8U3dpbmclMjBhbmQlMjBzbGlkZXN8ZW58MHx8MHx8fDA%3D", caption: "Outdoor Play" },
     ],
     linkText: "Shop toys & games",
   },
