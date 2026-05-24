@@ -1,5 +1,6 @@
-import React from 'react';
-import MiniGridItem from './MiniGridItem';
+import React from "react";
+import { Link } from "react-router-dom";
+import MiniGridItem from "./MiniGridItem";
 
 const QuadBox = ({ data }) => {
   return (
@@ -14,12 +15,12 @@ const QuadBox = ({ data }) => {
         ))}
       </div>
 
-      <a
-        href="#"
+      <Link
+        to="/product"
         className="mt-3 text-sm text-[#007185] hover:text-[#C7511F] hover:underline transition-colors duration-150"
       >
         {data.linkText}
-      </a>
+      </Link>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import amazonLogo from "../../assets/amazon_logo.png";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { FiShoppingCart } from "react-icons/fi";
@@ -10,13 +11,16 @@ const Topbar = () => {
         {/* LEFT: Logo + Location */}
         <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 order-1">
           {/* Logo */}
-          <div className="cursor-pointer border border-transparent hover:border-white px-1 sm:px-2 py-1 transition-all">
+          <Link
+            to="/"
+            className="cursor-pointer border border-transparent hover:border-white px-1 sm:px-2 py-1 transition-all no-underline"
+          >
             <img
               src={amazonLogo}
               alt="Amazon Logo"
               className="h-8 sm:h-10 object-contain"
             />
-          </div>
+          </Link>
 
           {/* Location - Always visible */}
           <div className="flex items-center gap-1 cursor-pointer border border-transparent hover:border-white px-2 py-1 transition-all">
@@ -48,22 +52,31 @@ const Topbar = () => {
         {/* RIGHT: Sign in + Orders + Cart */}
         <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 order-2 md:order-3 ml-auto md:ml-0">
           {/* Sign in - Always visible */}
-          <div className="text-xs cursor-pointer border border-transparent hover:border-white px-2 py-1 transition-all">
+          <Link
+            to="/account"
+            className="text-xs cursor-pointer border border-transparent hover:border-white px-2 py-1 transition-all no-underline text-white"
+          >
             <p className="text-gray-400">Hello, sign in</p>
             <p className="font-semibold leading-tight">Account</p>
-          </div>
+          </Link>
 
           {/* Orders - Hidden below md */}
-          <div className="hidden md:block text-xs cursor-pointer border border-transparent hover:border-white px-2 py-1 transition-all">
+          <Link
+            to="/orders"
+            className="hidden md:flex flex-col text-xs cursor-pointer border border-transparent hover:border-white px-2 py-1 transition-all no-underline text-white"
+          >
             <p className="text-gray-400">Returns</p>
             <p className="font-semibold leading-tight">& Orders</p>
-          </div>
+          </Link>
 
           {/* Cart - Always visible */}
-          <div className="flex items-center gap-1 cursor-pointer border border-transparent hover:border-white px-2 py-1 transition-all">
+          <Link
+            to="/cart"
+            className="flex items-center gap-1 cursor-pointer border border-transparent hover:border-white px-2 py-1 transition-all no-underline text-white"
+          >
             <FiShoppingCart size={22} className="flex-shrink-0" />
             <span className="hidden sm:inline font-semibold text-sm">Cart</span>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

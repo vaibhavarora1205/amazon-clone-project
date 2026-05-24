@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const ProductBar = ({ data }) => {
   return (
@@ -7,22 +8,23 @@ const ProductBar = ({ data }) => {
         <h2 className="text-lg font-bold text-gray-900 leading-tight">
           {data.title}
         </h2>
-        <a
-          href="#"
+        <Link
+          to="/product"
           className="text-sm text-[#007185] hover:text-[#C7511F] hover:underline transition-colors duration-150 whitespace-nowrap"
         >
           See all
-        </a>
+        </Link>
       </div>
 
       <div
         className="flex flex-row gap-3 overflow-x-auto"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {data.images.map((item, index) => (
-          <div
+          <Link
             key={index}
-            className="flex-shrink-0 flex flex-col items-center gap-1.5 cursor-pointer group"
+            to="/product"
+            className="no-underline flex-shrink-0 flex flex-col items-center gap-1.5 cursor-pointer group"
           >
             <div className="w-32 h-32 bg-gray-100 overflow-hidden">
               <img
@@ -35,7 +37,7 @@ const ProductBar = ({ data }) => {
             <p className="text-xs text-gray-800 font-medium text-center w-32 leading-tight line-clamp-2">
               {item.label}
             </p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
