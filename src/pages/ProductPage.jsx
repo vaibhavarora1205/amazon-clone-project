@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import { FiHeart } from "react-icons/fi";
+import { FaHeart } from "react-icons/fa";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 
-function ProductPage() {
+function ProductPage({ cartCount = 0, setCartCount = () => {} }) {
+  const [isWishlisted, setIsWishlisted] = useState(false);
+
+  const handleAddToCart = () => {
+    setCartCount((prev) => prev + 1);
+  };
+
   return (
     <>
-      <Navbar />
+      <Navbar cartCount={cartCount} />
       <main className="min-h-screen bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 md:px-6 py-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -25,9 +33,25 @@ function ProductPage() {
 
             {/* Product Details Section */}
             <div className="flex flex-col justify-start bg-white rounded-lg p-8">
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-                Premium Product
-              </h1>
+              <div className="flex items-start justify-between mb-3">
+                <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
+                  Premium Product
+                </h1>
+                <button
+                  onClick={() => setIsWishlisted(!isWishlisted)}
+                  className="ml-4 p-2 rounded-full hover:bg-gray-100 transition-colors duration-200"
+                  aria-label="Toggle Wishlist"
+                >
+                  {isWishlisted ? (
+                    <FaHeart size={28} className="text-red-600" />
+                  ) : (
+                    <FiHeart
+                      size={28}
+                      className="text-gray-400 hover:text-gray-600"
+                    />
+                  )}
+                </button>
+              </div>
 
               <div className="flex items-baseline gap-3 mb-4">
                 <span className="text-2xl font-bold text-red-600">₹4,999</span>
@@ -64,7 +88,10 @@ function ProductPage() {
               </div>
 
               <div className="space-y-3 mb-6">
-                <button className="w-full bg-orange-400 hover:bg-orange-500 text-white font-bold py-3 px-4 rounded-lg transition-colors duration-200">
+                <button
+                  onClick={handleAddToCart}
+                  className="w-full bg-orange-400 hover:bg-orange-500 text-white font-bold py-3 px-4 rounded-lg transition-colors duration-200"
+                >
                   Add to Cart
                 </button>
                 <button className="w-full bg-white border-2 border-orange-400 text-orange-400 hover:bg-orange-50 font-bold py-3 px-4 rounded-lg transition-colors duration-200">

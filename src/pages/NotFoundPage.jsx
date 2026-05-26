@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 
-function NotFoundPage() {
+function NotFoundPage({ cartCount }) {
   return (
     <>
-      <Navbar />
+      <Navbar cartCount={cartCount} />
       <main className="min-h-screen bg-gray-50 flex flex-col items-center justify-center">
         <div className="text-center px-4">
           <h1 className="text-9xl md:text-[150px] font-bold text-gray-900 mb-4">

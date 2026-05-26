@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import amazonLogo from "../../assets/amazon_logo.png";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { FiShoppingCart } from "react-icons/fi";
 
-const Topbar = () => {
+const Topbar = ({ cartCount = 0 }) => {
+  const [language, setLanguage] = useState("EN");
+  const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
+
+  const languages = [
+    { code: "EN", label: "English" },
+    { code: "HI", label: "Hindi" },
+    { code: "PN", label: "Punjabi" },
+  ];
   return (
     <div className="bg-gray-900 w-full font-sans">
       <div className="flex flex-wrap md:flex-nowrap items-center md:justify-between px-2 sm:px-4 py-2 text-white gap-2 sm:gap-3">
@@ -22,7 +30,6 @@ const Topbar = () => {
             />
           </Link>
 
-          {/* Location - Always visible */}
           <div className="flex items-center gap-1 cursor-pointer border border-transparent hover:border-white px-2 py-1 transition-all">
             <HiOutlineLocationMarker size={20} className="flex-shrink-0" />
             <div className="text-xs leading-tight">
@@ -49,9 +56,7 @@ const Topbar = () => {
           </button>
         </div>
 
-        {/* RIGHT: Sign in + Orders + Cart */}
         <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 order-2 md:order-3 ml-auto md:ml-0">
-          {/* Sign in - Always visible */}
           <Link
             to="/account"
             className="text-xs cursor-pointer border border-transparent hover:border-white px-2 py-1 transition-all no-underline text-white"
@@ -60,7 +65,36 @@ const Topbar = () => {
             <p className="font-semibold leading-tight">Account</p>
           </Link>
 
-          {/* Orders - Hidden below md */}
+          {/* Language Selector */}
+          <div className="relative">
+            <button
+              onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
+              className="text-xs cursor-pointer border border-transparent hover:border-white px-2 py-1 transition-all text-white flex items-center gap-1"
+            >
+              <span className="font-semibold">{language}</span>
+              <span>▼</span>
+            </button>
+
+            {showLanguageDropdown && (
+              <div className="absolute right-0 mt-1 bg-white text-black rounded shadow-lg z-50 min-w-[120px]">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => {
+                      setLanguage(lang.code);
+                      setShowLanguageDropdown(false);
+                    }}
+                    className={`block w-full text-left px-3 py-2 text-sm hover:bg-gray-100 transition-colors ${
+                      language === lang.code ? "bg-gray-200 font-semibold" : ""
+                    }`}
+                  >
+                    {lang.code} - {lang.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
           <Link
             to="/orders"
             className="hidden md:flex flex-col text-xs cursor-pointer border border-transparent hover:border-white px-2 py-1 transition-all no-underline text-white"
@@ -69,13 +103,24 @@ const Topbar = () => {
             <p className="font-semibold leading-tight">& Orders</p>
           </Link>
 
-          {/* Cart - Always visible */}
           <Link
             to="/cart"
-            className="flex items-center gap-1 cursor-pointer border border-transparent hover:border-white px-2 py-1 transition-all no-underline text-white"
+            className="flex items-center gap-1 cursor-pointer border border-transparent hover:border-white px-2 py-1 transition-all no-underline text-white relative"
           >
             <FiShoppingCart size={22} className="flex-shrink-0" />
-            <span className="hidden sm:inline font-semibold text-sm">Cart</span>
+            <div className="hidden sm:flex flex-col items-start">
+              <span className="font-semibold text-sm">Cart</span>
+              {cartCount > 0 && (
+                <span className="text-xs text-yellow-400 font-bold">
+                  ({cartCount})
+                </span>
+              )}
+            </div>
+            {cartCount > 0 && (
+              <span className="sm:hidden absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                {cartCount}
+              </span>
+            )}
           </Link>
         </div>
       </div>

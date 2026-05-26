@@ -1,12 +1,12 @@
 import React from "react";
 import Topbar from "./Topbar";
 import BottomBar from "./BottomBar";
-function Navbar() {
+function Navbar({ cartCount }) {
   return (
     <>
-      <Topbar></Topbar>
-      <BottomBar></BottomBar>
-      </>
+      <Topbar cartCount={cartCount} />
+      <BottomBar />
+    </>
   );
 }
 
